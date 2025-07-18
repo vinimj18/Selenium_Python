@@ -1,6 +1,4 @@
-login_credentials = [
-    {
-        'username': 'Admin',
-        'password': 'admin123'
-    }
-]
+login_credentials = {
+    'username': 'Admin',
+    'password': 'admin123'
+}

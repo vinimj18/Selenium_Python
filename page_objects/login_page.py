@@ -21,7 +21,7 @@ class LoginPage:
     def get_login_button(self):
         return self.driver.find_element(*LoginPage.login_button)
 
-    def login(self, credentials):
-        self.enter_user().send_keys(credentials['username'])
-        self.enter_password().send_keys(credentials['password'])
+    def login(self, username, password):
+        self.enter_user().send_keys(username)
+        self.enter_password().send_keys(password)
         self.get_login_button().click()

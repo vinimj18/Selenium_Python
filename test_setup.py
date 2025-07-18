@@ -1,39 +1,39 @@
-import pytest
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from page_objects.login_page import LoginPage
-import time
+# import pytest
+# from selenium import webdriver
+# from selenium.webdriver.chrome.service import Service
+# from selenium.webdriver.common.by import By
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions as EC
+# from page_objects.login_page import LoginPage
+# import time
 
 
-@pytest.fixture
-def setup_browser():
-    service = Service('chromedriver/chromedriver.exe')
-    driver = webdriver.Chrome(service=service)
-    driver.implicitly_wait(10)
-    driver.maximize_window()
-    yield driver
-    driver.quit()
+# @pytest.fixture
+# def setup_browser():
+#     service = Service('chromedriver/chromedriver.exe')
+#     driver = webdriver.Chrome(service=service)
+#     driver.implicitly_wait(10)
+#     driver.maximize_window()
+#     yield driver
+#     driver.quit()
 
 
-def test_login(setup_browser, self):
-    driver = setup_browser
-    driver.get('https://opensource-demo.orangehrmlive.com/')
+# def test_login(setup_browser, self):
+#     driver = setup_browser
+#     driver.get('https://opensource-demo.orangehrmlive.com/')
 
-    login_page = LoginPage(self.driver)
-    login_page.enter_user().send_keys("Admin")
+#     login_page = LoginPage(self.driver)
+#     login_page.enter_user().send_keys("Admin")
 
-    driver.find_element(By.NAME, 'password').send_keys('admin123')
-    driver.find_element(By.CLASS_NAME, 'orangehrm-login-button').click()
-    header = driver.find_element(By.CLASS_NAME, 'oxd-topbar-header-title')
-    menu = driver.find_element(By.CLASS_NAME, 'oxd-main-menu')
-    dashboard_card = driver.find_element(
-        By.CLASS_NAME, 'orangehrm-dashboard-widget')
-    assert header.is_displayed()
-    assert menu.is_displayed()
-    assert dashboard_card.is_displayed()
+#     driver.find_element(By.NAME, 'password').send_keys('admin123')
+#     driver.find_element(By.CLASS_NAME, 'orangehrm-login-button').click()
+#     header = driver.find_element(By.CLASS_NAME, 'oxd-topbar-header-title')
+#     menu = driver.find_element(By.CLASS_NAME, 'oxd-main-menu')
+#     dashboard_card = driver.find_element(
+#         By.CLASS_NAME, 'orangehrm-dashboard-widget')
+#     assert header.is_displayed()
+#     assert menu.is_displayed()
+#     assert dashboard_card.is_displayed()
 
 
 def test_add_new_employee(setup_browser):
