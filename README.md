@@ -58,19 +58,14 @@ cd Selenium_Python
 </pre>
 
 2. Install Dependencies
-'''bash
-Copy
-Edit
+<pre>
 pip install -r requirements.txt
-'''
+</pre>
 
-
-''''3. Run All Tests
-bash
-Copy
-Edit
+3. Run All Tests
+<pre>
 pytest
-'''
+</pre>
 
 ## ⚙️ Configuration
 Tests run directly against the public OrangeHRM demo site
