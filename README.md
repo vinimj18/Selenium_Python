@@ -47,13 +47,34 @@ This project validates key user workflows including login, employee management, 
 
 ```text
 .
-├── pages/       
-├── tests/       
-├── utils/       
-├── conftest.py
-├── requirements.txt
-├── pytest.ini
-└── README.md
+├── page_objects/               # Page Object classes (1 per page/screen)
+│   ├── dashboard_page.py
+│   ├── login_page.py
+│   ├── new_employee_page.py
+│   ├── personal_details_page.py
+│   └── pim_page.py
+│
+├── test_data/                  # Test data & credentials
+│   ├── employees.py
+│   └── login_credentials.py
+│
+├── tests/                      # PyTest test cases
+│   ├── conftest.py
+│   ├── test_add_new_employee.py
+│   ├── test_login.py
+│   ├── test_logout.py
+│   ├── test_search_employee.py
+│   └── test_update_employee.py
+│
+├── utils/                      # Utilities and base classes
+│   └── base_class.py
+│
+├── .gitignore
+├── pytest.ini                  # PyTest config
+├── README.md
+└── requirements.txt
+
+```
 ---
 
 ## 🚀 Getting Started
