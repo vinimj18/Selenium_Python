@@ -45,28 +45,16 @@ This project validates key user workflows including login, employee management, 
 
 ## 📁 Project Structure
 
-.
-├── pages/ # Page Object classes
-│ └── ...
-├── tests/ # Test files for each scenario
-│ └── ...
-├── utils/ # Reusable utilities (e.g., waits)
-├── conftest.py # PyTest setup/teardown fixtures
-├── requirements.txt # Project dependencies
-├── pytest.ini # PyTest config (verbosity, paths)
-└── README.md # Project overview (this file)
-
-yaml
-Copy
-Edit
+<pre> . ├── pages/ # Page Object classes │   └── ... ├── tests/ # Test files for each scenario │   └── ... ├── utils/ # Reusable utilities (e.g., waits) ├── conftest.py # PyTest setup/teardown fixtures ├── requirements.txt # Project dependencies ├── pytest.ini # PyTest config (verbosity, paths) └── README.md # Project overview (this file) </pre>
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Clone the Repo
-
-```bash
+1. Clone the Repo
+bash
+Copy
+Edit
 git clone https://github.com/vinimj18/Selenium_Python.git
 cd Selenium_Python
 2. Install Dependencies
@@ -99,3 +87,4 @@ Vinicius Maggiotto Justen
 📧 viniciusmaggiotto@gmail.com
 🔗 GitHub
 🔗 LinkedIn
+
