@@ -52,39 +52,43 @@ This project validates key user workflows including login, employee management, 
 ## 🚀 Getting Started
 
 1. Clone the Repo
-bash
-Copy
-Edit
+'''
 git clone https://github.com/vinimj18/Selenium_Python.git
 cd Selenium_Python
+'''
+
 2. Install Dependencies
-bash
+'''bash
 Copy
 Edit
 pip install -r requirements.txt
-3. Run All Tests
+'''
+
+
+''''3. Run All Tests
 bash
 Copy
 Edit
 pytest
-⚙️ Configuration
+'''
+
+## ⚙️ Configuration
 Tests run directly against the public OrangeHRM demo site
 
-ChromeDriver is automatically managed via webdriver-manager
+ChromeDriver is automatically managed using webdriver-manager
 
-Optionally, you can add a .env file to store future credentials or config overrides (currently not required)
+You can optionally add a .env file for future credential storage (not required for this demo)
 
-📌 Assumptions & Known Limitations
+## 📌 Assumptions & Known Limitations
 The OrangeHRM demo resets frequently, so created employee records may disappear between test runs
 
 Date selection for birthdate uses direct input due to inconsistent calendar widget behavior
 
 No test data is persisted; each run starts clean
 
-👤 Author
+## 👤 Author
 Vinicius Maggiotto Justen
 📍 Lisbon, Portugal
 📧 viniciusmaggiotto@gmail.com
-🔗 GitHub
-🔗 LinkedIn
+🔗 GitHub ・ LinkedIn
 
