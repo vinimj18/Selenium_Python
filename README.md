@@ -45,8 +45,15 @@ This project validates key user workflows including login, employee management, 
 
 ## 📁 Project Structure
 
-<pre> . ├── pages/ # Page Object classes │   └── ... ├── tests/ # Test files for each scenario │   └── ... ├── utils/ # Reusable utilities (e.g., waits) ├── conftest.py # PyTest setup/teardown fixtures ├── requirements.txt # Project dependencies ├── pytest.ini # PyTest config (verbosity, paths) └── README.md # Project overview (this file) </pre>
-
+```text
+.
+├── pages/       
+├── tests/       
+├── utils/       
+├── conftest.py
+├── requirements.txt
+├── pytest.ini
+└── README.md
 ---
 
 ## 🚀 Getting Started
@@ -81,9 +88,9 @@ Date selection for birthdate uses direct input due to inconsistent calendar widg
 
 No test data is persisted; each run starts clean
 
-## 👤 Author
-Vinicius Maggiotto Justen
-📍 Lisbon, Portugal
-📧 viniciusmaggiotto@gmail.com
-🔗 GitHub ・ LinkedIn
+### 👤 Author
 
+**Vinicius Maggiotto Justen**  
+📍 Lisbon, Portugal  
+📧 [viniciusmaggiotto@gmail.com](mailto:viniciusmaggiotto@gmail.com)  
+🔗 [GitHub](https://github.com/vinimj18) ・ [LinkedIn](https://www.linkedin.com/in/vinicius-maggiotto-justen)
