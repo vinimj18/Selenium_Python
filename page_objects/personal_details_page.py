@@ -11,9 +11,8 @@ class PersonalDetailsPage:
     nationality_arrow = (By.CLASS_NAME, 'oxd-select-text--arrow')
     nationality_dropdown = (By.CSS_SELECTOR, "div[role='listbox'] > div")
     calendar_open = (By.CLASS_NAME, 'oxd-date-input-icon')
-    month_selector = (By.CLASS_NAME, 'oxd-calendar-selector-month-selected')
-    year_selector = (By.CLASS_NAME, 'oxd-calendar-selector-year-selected')
-    calendar_dropdown = (By.CLASS_NAME, 'oxd-calendar-dropdown')
+    calendar_dropdown = (
+        By.CLASS_NAME, 'oxd-icon-button__icon')
     calendar = (By.CLASS_NAME, 'oxd-calendar-wrapper')
     save_button = (
         By.CSS_SELECTOR, "div[class='orangehrm-horizontal-padding orangehrm-vertical-padding'] button[type='submit']")
@@ -33,10 +32,10 @@ class PersonalDetailsPage:
         return self.driver.find_element(By.XPATH, xpath)
 
     def get_month(self):
-        return self.driver.find_element(*PersonalDetailsPage.month_selector)
+        return self.driver.find_elements(*PersonalDetailsPage.calendar_dropdown)[0]
 
     def get_year(self):
-        return self.driver.find_element(*PersonalDetailsPage.year_selector)
+        return self.driver.find_elements(*PersonalDetailsPage.calendar_dropdown)[1]
 
     def get_save_button(self):
         WebDriverWait(self.driver, 10).until(
@@ -49,3 +48,17 @@ class PersonalDetailsPage:
     def get_dob(self):
         element = self.driver.find_element(*PersonalDetailsPage.dob_text)
         return element.get_attribute('value') or element.text
+
+    def select_calendar_month(self, month):
+        xpath = f"//li[contains(@class, 'oxd-calendar-selector-month')]//p[text()='{month}']"
+        WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, xpath)))
+
+    def select_calendar_year(self, year):
+        xpath = f"//li[contains(@class, 'oxd-calendar-selector-year')]//p[text()='{year}']"
+        WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, xpath)))
+
+    def select_calendar_day(self, day):
+        xpath = f"//div[contains(@class, 'oxd-calendar-day') and text()='{day}']"
+        return self.driver.find_element(By.XPATH, xpath)

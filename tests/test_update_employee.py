@@ -58,12 +58,16 @@ class TestUpdateEmployee(BaseClass):
         personal_details_page.open_dob_calendar().click()
         time.sleep(5)
 
-        self.drop_down_selection(personal_details_page.get_month(),
-                                 personal_details_page.calendar_dropdown,
-                                 month)
-        self.drop_down_selection(personal_details_page.get_year(),
-                                 personal_details_page.calendar_dropdown,
-                                 year)
+        # self.drop_down_selection(personal_details_page.get_month(),
+        #                          personal_details_page.calendar_dropdown,
+        #                          month)
+        # self.drop_down_selection(personal_details_page.get_year(),
+        #                          personal_details_page.calendar_dropdown,
+        #                          year)
+
+        personal_details_page.select_calendar_month(month)
+        personal_details_page.select_calendar_year(year)
+        personal_details_page.get_day(day)
 
         personal_details_page.get_day(day).click()
 
