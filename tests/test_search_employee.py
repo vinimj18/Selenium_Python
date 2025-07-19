@@ -31,8 +31,8 @@ class TestSearchEmployee:
 
         pim_page = PIMPage(driver)
 
-        row = pim_page.search_employee(first_name, last_name, employee_id)
-        cells = pim_page.get_cells(row)
+        pim_page.search_employee(first_name, last_name, employee_id)
+        cells = pim_page.get_cells_by_employee_id(employee_id)
 
         assert cells[2].text == first_name
         assert cells[3].text == last_name

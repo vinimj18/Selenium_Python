@@ -1,8 +1,25 @@
-.venv
-venv
-*__pycache__/
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-.vscode/
-.mypy_cache/
+*$py.class
+
+# PyTest cache
 .pytest_cache/
+
+# Allure reports
+allure-results/
+allure-report/
+
+# VSCode or JetBrains IDE configs
+.vscode/
+.idea/
+
+# macOS metadata
+.DS_Store
+
+# Python virtual environments
+env/
+venv/
+
+# Logs
+*.log

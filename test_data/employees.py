@@ -18,15 +18,11 @@ test_employee_data = [
         'dob': '01-03-1980'
     },
     {
-        'first_name': 'Tom',
-        'last_name': 'Riddle',
-        'nationality': 'British',
-        'dob': '31-12-1926'
-    },
-    {
         'first_name': 'Albus',
         'last_name': 'Dumbledore',
         'nationality': 'British',
-        'dob': '30-08-1881'
+        'year': '1971',
+        'month': 'August',
+        'day': '30',
     }
 ]
