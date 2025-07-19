@@ -11,6 +11,8 @@ class DashboardPage:
     menu = (By.CLASS_NAME, 'oxd-main-menu')
     card = (By.CLASS_NAME, 'orangehrm-dashboard-widget')
     menu_pim = (By.CLASS_NAME, 'oxd-main-menu-item')
+    user_dropdown_arrow = (By.CLASS_NAME, 'oxd-userdropdown-icon')
+    logout_link = (By.CLASS_NAME, 'oxd-userdropdown-link')
 
     def get_header(self):
         return self.driver.find_element(*DashboardPage.header)
@@ -23,3 +25,9 @@ class DashboardPage:
 
     def get_menu_pim(self):
         return self.driver.find_elements(*DashboardPage.menu_pim)[1]
+
+    def get_dropdown_arrow(self):
+        return self.driver.find_element(*DashboardPage.user_dropdown_arrow)
+
+    def get_logout_link(self):
+        return self.driver.find_elements(*DashboardPage.logout_link)[3]

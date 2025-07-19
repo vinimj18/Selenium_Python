@@ -6,17 +6,17 @@ import pytest
 
 
 @pytest.mark.usefixtures('setup')
-class TestLogin:
+class TestLogout:
 
-    def test_login(self, setup):
+    def test_logout(self, setup):
         driver = setup
-        login_page = LoginPage(driver)
 
+        login_page = LoginPage(driver)
         login_page.login(
             login_credentials['username'], login_credentials['password'])
 
         dashboard_page = DashboardPage(driver)
+        dashboard_page.get_dropdown_arrow().click()
+        dashboard_page.get_logout_link().click()
 
-        assert dashboard_page.get_header().is_displayed()
-        assert dashboard_page.get_menu().is_displayed()
-        assert dashboard_page.get_card().is_displayed()
+        assert login_page.get_login_button().is_displayed()
