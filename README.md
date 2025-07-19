@@ -52,10 +52,10 @@ This project validates key user workflows including login, employee management, 
 ## 🚀 Getting Started
 
 1. Clone the Repo
-'''
+<pre>
 git clone https://github.com/vinimj18/Selenium_Python.git
 cd Selenium_Python
-'''
+</pre>
 
 2. Install Dependencies
 '''bash
