@@ -1,21 +1,17 @@
-from page_objects.login_page import LoginPage
+from utils.base_class import BaseClass
 from page_objects.dashboard_page import DashboardPage
 from test_data.login_credentials import login_credentials
 
 import pytest
 
 
-@pytest.mark.usefixtures('setup')
-class TestLogin:
+class TestLogin(BaseClass):
 
-    def test_login(self, setup):
-        driver = setup
-        login_page = LoginPage(driver)
+    def test_login(self):
+        self.login(login_credentials['username'],
+                   login_credentials['password'])
 
-        login_page.login(
-            login_credentials['username'], login_credentials['password'])
-
-        dashboard_page = DashboardPage(driver)
+        dashboard_page = DashboardPage(self.driver)
 
         assert dashboard_page.get_header().is_displayed()
         assert dashboard_page.get_menu().is_displayed()

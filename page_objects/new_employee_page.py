@@ -46,10 +46,9 @@ class NewEmployeePage:
         pim_page = PIMPage(self.driver)
         pim_page.get_add_employee_button().click()
 
-        new_employee_page = NewEmployeePage(self.driver)
-        new_employee_page.get_first_name().send_keys(first_name)
-        new_employee_page.get_last_name().send_keys(last_name)
-        employee_id = new_employee_page.get_employee_id().get_attribute('value')
-        new_employee_page.get_save_button().click()
+        self.get_first_name().send_keys(first_name)
+        self.get_last_name().send_keys(last_name)
+        employee_id = self.get_employee_id().get_attribute('value')
+        self.get_save_button().click()
 
         return employee_id

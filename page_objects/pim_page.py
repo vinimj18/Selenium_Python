@@ -24,10 +24,17 @@ class PIMPage:
         return self.driver.find_element(*PIMPage.search_button)
 
     def wait_results(self):
-        return WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(PIMPage.results))
+        return WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((PIMPage.results)))
 
     def get_result(self, employee_id):
-        return self.driver.find_element(By.XPATH, f"//div[@role='rowgroup']//div[contains(text(), '{employee_id}')]/ancestor::div[@role='row']")
+        return self.driver.find_element(By.XPATH, f"//div[@role='rowgroup']//div[(text()='{employee_id}')]/ancestor::div[@role='row']")
 
     def get_cells(self, row):
-        return self.driver.find_elements(*PIMPage.cells)
+        return row.find_elements(*PIMPage.cells)
+
+    def search_employee(self, first_name, last_name, employee_id):
+        self.get_employee_name_field().send_keys(
+            f'{first_name} {last_name}')
+        self.get_search_button().click()
+        self.wait_results()
+        return self.get_result(employee_id)
