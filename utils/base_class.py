@@ -73,3 +73,7 @@ class BaseClass:
         pim_page.get_row_by_employee_id(employee_id)
         pim_page.wait_for_table_to_reload()
         return [pim_page.get_cells_by_employee_id(employee_id), employee_id]
+
+    def get_cells_by_employee_id(self, employee_id):
+        pim_page = PIMPage(self.driver)
+        return pim_page.get_cells_by_employee_id(employee_id)

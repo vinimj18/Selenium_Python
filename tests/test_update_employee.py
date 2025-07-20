@@ -19,7 +19,8 @@ class TestUpdateEmployee(BaseClass):
             employee_data['first_name'],
             employee_data['last_name']
         )
-        cells[1].click()
+        refreshed_cells = self.get_cells_by_employee_id(employee_id)
+        refreshed_cells[1].click()
 
         personal_details_page = PersonalDetailsPage(self.driver)
 

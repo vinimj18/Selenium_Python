@@ -17,8 +17,8 @@ class TestSearchEmployee(BaseClass):
             employee_data['first_name'],
             employee_data['last_name']
         )
-
+        refreshed_cells = self.get_cells_by_employee_id(employee_id)
         # Test Assertions
-        assert cells[2].text == employee_data['first_name']
-        assert cells[3].text == employee_data['last_name']
-        assert cells[1].text == employee_id
+        assert refreshed_cells[2].text == employee_data['first_name']
+        assert refreshed_cells[3].text == employee_data['last_name']
+        assert refreshed_cells[1].text == employee_id
