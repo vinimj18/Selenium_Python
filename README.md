@@ -92,7 +92,7 @@ pip install -r requirements.txt
 
 3. Run All Tests
 <pre>
-pytest
+pytest tests
 </pre>
 
 ## ⚙️ Configuration
