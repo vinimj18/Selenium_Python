@@ -22,10 +22,15 @@ describe("login_logout", () => {
     it("Successful login", function () {
       const loginInfo = this.testData.login;
 
+      // Execute Login Steps
       cy.login(loginInfo);
 
+      // Verify if elements in the dashboard are loaded correctly
+      // Heade
       cy.get(".oxd-topbar-header-title").should("be.visible");
+      // Main Menu
       cy.get(".oxd-main-menu").should("be.visible");
+      // Dashboard Card
       cy.get(".orangehrm-dashboard-widget").should("be.visible");
     });
   });
@@ -33,11 +38,11 @@ describe("login_logout", () => {
   context("logout", function () {
     it("Successful logout", function () {
       const loginInfo = this.testData.login;
+      // Execute Login and Logout steps
       cy.login(loginInfo);
+      cy.logout(loginInfo);
 
-      cy.get(".oxd-userdropdown-icon").click();
-      cy.get(".oxd-userdropdown-link").eq(3).click();
-
+      // Verify if login button is visible after logout
       cy.get(".orangehrm-login-button").should("be.visible");
     });
   });

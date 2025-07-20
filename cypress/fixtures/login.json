@@ -1,6 +1,10 @@
 {
-    "login": {
-        "username": "Admin",
-        "password": "admin123"
-        }
+  "login": {
+    "username": "Admin",
+    "password": "admin123"
+  },
+  "newEmployee": {
+    "firstName": "Bruce",
+    "lastName": "Wayne"
+  }
 }
