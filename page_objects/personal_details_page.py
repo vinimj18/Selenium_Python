@@ -21,7 +21,6 @@ class PersonalDetailsPage:
     dob_text = (By.CSS_SELECTOR, "input[data-v-4a95a2e0]")
 
     # Elements
-
     def open_nationality_dd(self):
         return self.driver.find_elements(*PersonalDetailsPage.nationality_arrow)[0]
 

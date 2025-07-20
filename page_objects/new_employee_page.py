@@ -1,9 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from page_objects.login_page import LoginPage
-from page_objects.dashboard_page import DashboardPage
-from page_objects.pim_page import PIMPage
 
 
 class NewEmployeePage:

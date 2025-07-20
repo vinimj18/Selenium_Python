@@ -2,7 +2,6 @@ from page_objects.new_employee_page import NewEmployeePage
 from test_data.test_data import data
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import pytest
 from utils.base_class import BaseClass
 
 # TEST DATA

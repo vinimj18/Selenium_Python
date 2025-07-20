@@ -1,5 +1,4 @@
 import pytest
-
 from page_objects.dashboard_page import DashboardPage
 from page_objects.login_page import LoginPage
 from page_objects.new_employee_page import NewEmployeePage

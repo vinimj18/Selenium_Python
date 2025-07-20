@@ -2,7 +2,7 @@
 
 Automated UI test suite for the [OrangeHRM demo site](https://opensource-demo.orangehrmlive.com/), developed as part of a QA automation technical assessment.
 
-This project validates key user workflows including login, employee management, and logout — using Selenium WebDriver and PyTest, structured with the Page Object Model (POM).
+This project validates key user workflows including login, employee management, and logout, using Selenium WebDriver and PyTest, structured with the Page Object Model (POM).
 
 ---
 
@@ -97,7 +97,7 @@ pip install -r requirements.txt
 
 3. Run All Tests
 <pre>
-pytest
+pytest tests
 </pre>
 
 ## ⚙️ Configuration
