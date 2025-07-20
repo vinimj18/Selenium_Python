@@ -8,20 +8,19 @@ class PersonalDetailsPage:
     def __init__(self, driver) -> None:
         self.driver = driver
 
+    # Locators
     nationality_arrow = (By.CLASS_NAME, 'oxd-select-text--arrow')
     nationality_dropdown = (By.CSS_SELECTOR, "div[role='listbox'] > div")
     nationality_text = (By.CLASS_NAME, "oxd-select-text-input")
-    calendar = (By.CLASS_NAME, 'oxd-calendar-wrapper')
     calendar_open = (By.CLASS_NAME, 'oxd-date-input-icon')
-    calendar_dropdown = (
-        By.CLASS_NAME, 'oxd-icon-button__icon')
+    calendar_dropdown = (By.CLASS_NAME, 'oxd-icon-button__icon')
     day_options = (By.CLASS_NAME, 'oxd-calendar-date')
     month_options = (By.CLASS_NAME, 'oxd-calendar-dropdown--option')
     year_options = (By.CLASS_NAME, 'oxd-calendar-dropdown--option')
-    save_button = (
-        By.CSS_SELECTOR, "div[class='orangehrm-horizontal-padding orangehrm-vertical-padding'] button[type='submit']")
+    save_button = (By.CSS_SELECTOR, "button[type='submit']")
     dob_text = (By.CSS_SELECTOR, "input[data-v-4a95a2e0]")
-    close_calendar_button = (By.CSS_SELECTOR, '.oxd-date-input-link.--close')
+
+    # Elements
 
     def open_nationality_dd(self):
         return self.driver.find_elements(*PersonalDetailsPage.nationality_arrow)[0]
@@ -30,10 +29,6 @@ class PersonalDetailsPage:
         WebDriverWait(self.driver, 10).until(
             EC.visibility_of_all_elements_located(PersonalDetailsPage.calendar_open))
         return self.driver.find_elements(*PersonalDetailsPage.calendar_open)[1]
-
-    def get_day(self, day):
-        xpath = f"//div[contains(@class, 'oxd-calendar-date-wrapper')]//div[text()='{day}']"
-        return self.driver.find_element(By.XPATH, xpath)
 
     def get_month(self):
         return self.driver.find_elements(*PersonalDetailsPage.calendar_dropdown)[0]
@@ -52,6 +47,3 @@ class PersonalDetailsPage:
     def get_dob(self):
         element = self.driver.find_elements(*PersonalDetailsPage.dob_text)[1]
         return element.get_attribute('value') or element.text
-
-    def close_calendar(self):
-        return self.driver.find_element(*PersonalDetailsPage.close_calendar_button)

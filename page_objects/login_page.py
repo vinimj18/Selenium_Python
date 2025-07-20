@@ -6,10 +6,12 @@ class LoginPage:
     def __init__(self, driver) -> None:
         self.driver = driver
 
+    # Locators
     username = (By.NAME, "username")
     password = (By.NAME, "password")
     login_button = (By.CLASS_NAME, 'orangehrm-login-button')
 
+    # Elements
     def enter_user(self):
         return self.driver.find_element(*LoginPage.username)
 
@@ -18,8 +20,3 @@ class LoginPage:
 
     def get_login_button(self):
         return self.driver.find_element(*LoginPage.login_button)
-
-    def login(self, username, password):
-        self.enter_user().send_keys(username)
-        self.enter_password().send_keys(password)
-        self.get_login_button().click()

@@ -3,11 +3,11 @@ import pytest
 from page_objects.dashboard_page import DashboardPage
 from page_objects.login_page import LoginPage
 from page_objects.new_employee_page import NewEmployeePage
-from page_objects.personal_details_page import PersonalDetailsPage
 from page_objects.pim_page import PIMPage
-
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
+# Using BaseClass to make all tests have access to the WebDriver setup and shared methods.
 
 
 @pytest.mark.usefixtures('setup')
@@ -15,8 +15,7 @@ class BaseClass:
 
     driver = None
 
-    # def __init__(self, driver) -> None:
-    #     self.driver = driver
+    # Reusable Methods
 
     def login(self, username, password):
         login_page = LoginPage(self.driver)
@@ -38,8 +37,7 @@ class BaseClass:
 
     def add_new_employee(self, username, password, first_name, last_name):
 
-        login_page = LoginPage(self.driver)
-        login_page.login(username, password)
+        self.login(username, password)
 
         dashboard_page = DashboardPage(self.driver)
         dashboard_page.get_menu_pim().click()
@@ -48,7 +46,6 @@ class BaseClass:
         pim_page.get_add_employee_button().click()
 
         new_employee_page = NewEmployeePage(self.driver)
-
         new_employee_page.get_first_name().send_keys(first_name)
         new_employee_page.get_last_name().send_keys(last_name)
         employee_id = new_employee_page.get_employee_id().get_attribute('value')
@@ -67,7 +64,12 @@ class BaseClass:
         dashboard_page.get_menu_pim().click()
 
         pim_page = PIMPage(self.driver)
-
-        pim_page.search_employee(first_name, last_name, employee_id)
+        pim_page.get_employee_name_field().send_keys(
+            f'{first_name} {last_name}')
+        pim_page.wait.until(
+            EC.element_to_be_clickable((pim_page.search_button)))
+        pim_page.get_search_button().click()
+        pim_page.wait_results()
+        pim_page.get_row_by_employee_id(employee_id)
         pim_page.wait_for_table_to_reload()
         return [pim_page.get_cells_by_employee_id(employee_id), employee_id]

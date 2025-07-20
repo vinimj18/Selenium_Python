@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-import pytest
 
 
 class DashboardPage:
@@ -7,6 +6,7 @@ class DashboardPage:
     def __init__(self, driver) -> None:
         self.driver = driver
 
+    # Locators
     header = (By.CLASS_NAME, 'oxd-topbar-header-title')
     menu = (By.CLASS_NAME, 'oxd-main-menu')
     card = (By.CLASS_NAME, 'orangehrm-dashboard-widget')
@@ -14,6 +14,7 @@ class DashboardPage:
     user_dropdown_arrow = (By.CLASS_NAME, 'oxd-userdropdown-icon')
     logout_link = (By.CLASS_NAME, 'oxd-userdropdown-link')
 
+    # Elements
     def get_header(self):
         return self.driver.find_element(*DashboardPage.header)
 

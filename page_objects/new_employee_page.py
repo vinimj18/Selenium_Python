@@ -10,7 +10,8 @@ class NewEmployeePage:
 
     def __init__(self, driver) -> None:
         self.driver = driver
-
+        self.wait = WebDriverWait(self.driver, 10)
+    # Locators
     first_name = (By.NAME, 'firstName')
     last_name = (By.NAME, 'lastName')
     employee_id = (
@@ -19,6 +20,7 @@ class NewEmployeePage:
     pop_up = (By.CSS_SELECTOR,
               'p.oxd-text.oxd-text--p.oxd-text--toast-message.oxd-toast-content-text')
 
+    # Elements
     def get_first_name(self):
         return self.driver.find_element(*NewEmployeePage.first_name)
 
@@ -32,5 +34,4 @@ class NewEmployeePage:
         return self.driver.find_element(*NewEmployeePage.save_button)
 
     def get_pop_up(self):
-        wait = WebDriverWait(self.driver, 10)
-        return wait.until(EC.visibility_of_element_located(NewEmployeePage.pop_up))
+        return self.wait.until(EC.visibility_of_element_located(NewEmployeePage.pop_up))

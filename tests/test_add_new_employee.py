@@ -10,12 +10,12 @@ login_data = data['login']
 employee_data = data['add_new_employee']
 
 
-@pytest.mark.usefixtures('setup')
 class TestNewEmployee(BaseClass):
 
-    def test_add_new_employee(self, setup):
-        driver = setup
-        new_employee_page = NewEmployeePage(driver)
+    def test_add_new_employee(self):
+
+        # Test Navigation
+        new_employee_page = NewEmployeePage(self.driver)
 
         self.add_new_employee(
             login_data['username'],
@@ -23,7 +23,8 @@ class TestNewEmployee(BaseClass):
             employee_data['first_name'],
             employee_data['last_name'])
 
+        # Test Assertions
         assert "Success" in new_employee_page.get_pop_up().text
-        wait = WebDriverWait(driver, 10)
-        wait.until(EC.url_changes(driver.current_url))
-        assert "PersonalDetails" in driver.current_url
+        WebDriverWait(self.driver, 10).until(
+            EC.url_changes(self.driver.current_url))
+        assert "PersonalDetails" in self.driver.current_url

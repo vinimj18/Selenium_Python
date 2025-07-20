@@ -2,25 +2,17 @@ from utils.base_class import BaseClass
 from page_objects.personal_details_page import PersonalDetailsPage
 from test_data.test_data import data
 
-import pytest
-import time
-
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
 
 # TEST DATA
 login_data = data['login']
 employee_data = data['update_employee']
 
 
-@pytest.mark.usefixtures('setup')
 class TestUpdateEmployee(BaseClass):
 
-    def test_update_employee(self, setup):
-        driver = setup
+    def test_update_employee(self):
 
+        # Test Navigation
         cells, employee_id = self.search_employee(
             login_data['username'],
             login_data['password'],
@@ -29,7 +21,7 @@ class TestUpdateEmployee(BaseClass):
         )
         cells[1].click()
 
-        personal_details_page = PersonalDetailsPage(driver)
+        personal_details_page = PersonalDetailsPage(self.driver)
 
         arrow = personal_details_page.open_nationality_dd()
 
@@ -49,15 +41,11 @@ class TestUpdateEmployee(BaseClass):
                                  personal_details_page.day_options,
                                  employee_data['dob'])
 
-        # WebDriverWait(driver, 10).until_not(
-        #     lambda d: d.find_element(By.CSS_SELECTOR, "ul").is_displayed()
-        # )
-
-        driver.execute_script(
+        self.driver.execute_script(
             "arguments[0].scrollIntoView({block: 'center'});",
             personal_details_page.get_save_button())
 
-        # time.sleep(3)
+        # Test Assertions
         assert personal_details_page.get_nationality(
         ) == employee_data['nationality']
         assert employee_data['dob'] in personal_details_page.get_dob()
