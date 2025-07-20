@@ -17,6 +17,10 @@ data = {
         'first_name': 'Hermione',
         'last_name': 'Granger',
         'Id_append': '0002',
-        'nationality': 'British'
+        'nationality': 'British',
+        'yob': '1979',
+        'mob': 'September',
+        'mob_num': '09',
+        'dob': '19'
     }
 }

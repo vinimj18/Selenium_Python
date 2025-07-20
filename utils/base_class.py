@@ -25,7 +25,8 @@ class BaseClass:
         login_page.get_login_button().click()
 
     def drop_down_selection(self, arrow_element, dropdown_locator, value):
-        arrow_element.click()
+        if arrow_element != None:
+            arrow_element.click()
         WebDriverWait(self.driver, 10).until(
             EC.visibility_of_all_elements_located(dropdown_locator))
         options = self.driver.find_elements(*dropdown_locator)
@@ -68,6 +69,5 @@ class BaseClass:
         pim_page = PIMPage(self.driver)
 
         pim_page.search_employee(first_name, last_name, employee_id)
-
-        pim_page.wait_for_id_tobe_clickable(employee_id)
+        pim_page.wait_for_table_to_reload()
         return [pim_page.get_cells_by_employee_id(employee_id), employee_id]

@@ -7,12 +7,14 @@ class PIMPage:
 
     def __init__(self, driver) -> None:
         self.driver = driver
+        self.wait = WebDriverWait(self.driver, 30)
 
     add_employee = (By.CLASS_NAME, 'oxd-topbar-body-nav-tab-item')
     employee_name = (By.CSS_SELECTOR, "input[placeholder='Type for hints...']")
     search_button = (By.CSS_SELECTOR, "button[type='submit']")
     results = (By.CSS_SELECTOR, "div[role='rowgroup'] div[role='row']")
     cells = (By.CSS_SELECTOR, "div.oxd-table-cell")
+    table = (By.CLASS_NAME, "oxd-table-body")
 
     def get_add_employee_button(self):
         return self.driver.find_elements(*PIMPage.add_employee)[2]
@@ -24,7 +26,7 @@ class PIMPage:
         return self.driver.find_element(*PIMPage.search_button)
 
     def wait_results(self):
-        return WebDriverWait(self.driver, 30).until(EC.presence_of_element_located((PIMPage.results)))
+        return self.wait.until(EC.presence_of_element_located((PIMPage.results)))
 
     def search_employee(self, first_name, last_name, employee_id):
         self.get_employee_name_field().send_keys(
@@ -35,7 +37,7 @@ class PIMPage:
 
     def get_row_by_employee_id(self, employee_id):
         xpath = f"//div[@role='rowgroup']//div[(text()='{employee_id}')]/ancestor::div[@role='row']"
-        WebDriverWait(self.driver, 10).until(
+        self.wait.until(
             EC.presence_of_element_located((By.XPATH, xpath)))
         return self.driver.find_element(By.XPATH, xpath)
 
@@ -45,4 +47,7 @@ class PIMPage:
 
     def wait_for_id_tobe_clickable(self, employee_id):
         xpath = f"//div[@role='rowgroup']//div[(text()='{employee_id}')]/ancestor::div[@role='row']"
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, xpath)))
+        return self.wait.until(EC.element_to_be_clickable((By.XPATH, xpath)))
+
+    def wait_for_table_to_reload(self):
+        return self.wait.until(EC.presence_of_element_located((PIMPage.table)))

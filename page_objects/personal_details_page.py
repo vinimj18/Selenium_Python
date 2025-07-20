@@ -10,14 +10,18 @@ class PersonalDetailsPage:
 
     nationality_arrow = (By.CLASS_NAME, 'oxd-select-text--arrow')
     nationality_dropdown = (By.CSS_SELECTOR, "div[role='listbox'] > div")
+    nationality_text = (By.CLASS_NAME, "oxd-select-text-input")
+    calendar = (By.CLASS_NAME, 'oxd-calendar-wrapper')
     calendar_open = (By.CLASS_NAME, 'oxd-date-input-icon')
     calendar_dropdown = (
         By.CLASS_NAME, 'oxd-icon-button__icon')
-    calendar = (By.CLASS_NAME, 'oxd-calendar-wrapper')
+    day_options = (By.CLASS_NAME, 'oxd-calendar-date')
+    month_options = (By.CLASS_NAME, 'oxd-calendar-dropdown--option')
+    year_options = (By.CLASS_NAME, 'oxd-calendar-dropdown--option')
     save_button = (
         By.CSS_SELECTOR, "div[class='orangehrm-horizontal-padding orangehrm-vertical-padding'] button[type='submit']")
-    nationality_text = (By.CLASS_NAME, "oxd-select-text-input")
-    dob_text = (By.CSS_SELECTOR, "div.oxd-date-input input.oxd-input")
+    dob_text = (By.CSS_SELECTOR, "input[data-v-4a95a2e0]")
+    close_calendar_button = (By.CSS_SELECTOR, '.oxd-date-input-link.--close')
 
     def open_nationality_dd(self):
         return self.driver.find_elements(*PersonalDetailsPage.nationality_arrow)[0]
@@ -39,26 +43,15 @@ class PersonalDetailsPage:
 
     def get_save_button(self):
         WebDriverWait(self.driver, 10).until(
-            EC.invisibility_of_element_located(PersonalDetailsPage.calendar))
+            EC.element_to_be_clickable(PersonalDetailsPage.save_button))
         return self.driver.find_element(*PersonalDetailsPage.save_button)
 
     def get_nationality(self):
         return self.driver.find_element(*PersonalDetailsPage.nationality_text).text
 
     def get_dob(self):
-        element = self.driver.find_element(*PersonalDetailsPage.dob_text)
+        element = self.driver.find_elements(*PersonalDetailsPage.dob_text)[1]
         return element.get_attribute('value') or element.text
 
-    def select_calendar_month(self, month):
-        xpath = f"//li[contains(@class, 'oxd-calendar-selector-month')]//p[text()='{month}']"
-        WebDriverWait(self.driver, 5).until(
-            EC.element_to_be_clickable((By.XPATH, xpath)))
-
-    def select_calendar_year(self, year):
-        xpath = f"//li[contains(@class, 'oxd-calendar-selector-year')]//p[text()='{year}']"
-        WebDriverWait(self.driver, 5).until(
-            EC.element_to_be_clickable((By.XPATH, xpath)))
-
-    def select_calendar_day(self, day):
-        xpath = f"//div[contains(@class, 'oxd-calendar-day') and text()='{day}']"
-        return self.driver.find_element(By.XPATH, xpath)
+    def close_calendar(self):
+        return self.driver.find_element(*PersonalDetailsPage.close_calendar_button)
