@@ -26,7 +26,7 @@ describe("login_logout", () => {
       cy.login(loginInfo);
 
       // Verify if elements in the dashboard are loaded correctly
-      // Heade
+      // Header
       cy.get(".oxd-topbar-header-title").should("be.visible");
       // Main Menu
       cy.get(".oxd-main-menu").should("be.visible");

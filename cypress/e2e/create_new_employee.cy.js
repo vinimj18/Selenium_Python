@@ -13,6 +13,7 @@ describe("create employee", () => {
       const loginInfo = this.testData.login;
       const employee = this.testData.newEmployee;
 
+      //   Logs in and registers a new employee using Custom Commands
       cy.login(loginInfo);
       cy.createNewEmployee(employee);
 

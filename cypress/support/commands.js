@@ -7,7 +7,8 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-
+//
+// Custom Commands names are self descriptive
 Cypress.Commands.add("login", (loginInfo = "") => {
   cy.visit("/");
 
