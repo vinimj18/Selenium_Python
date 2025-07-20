@@ -7,6 +7,8 @@ describe("create employee", () => {
     });
   });
   context("employee", function () {
+    // Cypress could not easily verify the pop up success message.
+    // Due to the short time I skipped this step and verified if the name was correctly saved.
     it("Create New Employee Successfully", function () {
       const loginInfo = this.testData.login;
       const employee = this.testData.newEmployee;
