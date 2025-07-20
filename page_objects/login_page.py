@@ -1,6 +1,4 @@
 from selenium.webdriver.common.by import By
-import pytest
-from test_data.login_credentials import login_credentials
 
 
 class LoginPage:

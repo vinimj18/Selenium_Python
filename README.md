@@ -19,20 +19,24 @@ This project validates key user workflows including login, employee management, 
 ## ✅ Test Scenarios
 
 1. **Login Test**
+
    - Log in with valid credentials (`Admin / admin123`)
    - Assert successful login by checking dashboard visibility
 
 2. **Add New Employee**
+
    - Navigate to PIM > Add Employee
    - Fill in employee name and ID
    - Assert redirect to Personal Details page and success message
 
 3. **Search for Employee**
+
    - Navigate to PIM > Employee List
    - Search by name or ID
    - Assert presence of employee in result list
 
 4. **Update Personal Details**
+
    - Edit nationality and birthdate
    - Assert updated fields are saved and correctly displayed
 
@@ -56,7 +60,7 @@ This project validates key user workflows including login, employee management, 
 │
 ├── test_data/                  # Test data & credentials
 │   ├── employees.py
-│   └── login_credentials.py
+│   └── login.py
 │
 ├── tests/                      # PyTest test cases
 │   ├── conftest.py
@@ -75,6 +79,7 @@ This project validates key user workflows including login, employee management, 
 └── requirements.txt
 
 ```
+
 ---
 
 ## 🚀 Getting Started
@@ -96,6 +101,7 @@ pytest
 </pre>
 
 ## ⚙️ Configuration
+
 Tests run directly against the public OrangeHRM demo site
 
 ChromeDriver is automatically managed using webdriver-manager
@@ -103,6 +109,7 @@ ChromeDriver is automatically managed using webdriver-manager
 You can optionally add a .env file for future credential storage (not required for this demo)
 
 ## 📌 Assumptions & Known Limitations
+
 The OrangeHRM demo resets frequently, so created employee records may disappear between test runs
 
 Date selection for birthdate uses direct input due to inconsistent calendar widget behavior

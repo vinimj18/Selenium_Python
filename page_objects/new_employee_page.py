@@ -34,21 +34,3 @@ class NewEmployeePage:
     def get_pop_up(self):
         wait = WebDriverWait(self.driver, 10)
         return wait.until(EC.visibility_of_element_located(NewEmployeePage.pop_up))
-
-    def add_new_employee(self, username, password, first_name, last_name):
-
-        login_page = LoginPage(self.driver)
-        login_page.login(username, password)
-
-        dashboard_page = DashboardPage(self.driver)
-        dashboard_page.get_menu_pim().click()
-
-        pim_page = PIMPage(self.driver)
-        pim_page.get_add_employee_button().click()
-
-        self.get_first_name().send_keys(first_name)
-        self.get_last_name().send_keys(last_name)
-        employee_id = self.get_employee_id().get_attribute('value')
-        self.get_save_button().click()
-
-        return employee_id

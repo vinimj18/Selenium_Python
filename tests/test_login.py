@@ -1,6 +1,6 @@
 from utils.base_class import BaseClass
 from page_objects.dashboard_page import DashboardPage
-from test_data.login_credentials import login_credentials
+from test_data.test_data import data
 
 import pytest
 
@@ -8,8 +8,8 @@ import pytest
 class TestLogin(BaseClass):
 
     def test_login(self):
-        self.login(login_credentials['username'],
-                   login_credentials['password'])
+        self.login(data['login']['username'],
+                   data['login']['password'])
 
         dashboard_page = DashboardPage(self.driver)
 

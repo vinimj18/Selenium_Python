@@ -3,7 +3,7 @@ from page_objects.new_employee_page import NewEmployeePage
 from page_objects.pim_page import PIMPage
 from page_objects.dashboard_page import DashboardPage
 from page_objects.personal_details_page import PersonalDetailsPage
-from test_data.login_credentials import login_credentials
+from test_data.test_data import login
 from test_data.employees import test_employee_data
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -15,8 +15,8 @@ from selenium.webdriver.common.by import By
 
 
 # TEST DATA
-username = login_credentials['username']
-password = login_credentials['password']
+username = login['username']
+password = login['password']
 first_name = test_employee_data[3]['first_name']
 last_name = test_employee_data[3]['last_name']
 nationality = test_employee_data[3]['nationality']

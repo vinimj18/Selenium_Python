@@ -1,26 +1,27 @@
 from page_objects.new_employee_page import NewEmployeePage
-from test_data.login_credentials import login_credentials
-from test_data.employees import test_employee_data
+from test_data.test_data import data
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pytest
+from utils.base_class import BaseClass
 
 # TEST DATA
-username = login_credentials['username']
-password = login_credentials['password']
-first_name = test_employee_data[0]['first_name']
-last_name = test_employee_data[0]['last_name']
+login_data = data['login']
+employee_data = data['add_new_employee']
 
 
 @pytest.mark.usefixtures('setup')
-class TestNewEmployee:
+class TestNewEmployee(BaseClass):
 
     def test_add_new_employee(self, setup):
         driver = setup
         new_employee_page = NewEmployeePage(driver)
 
-        new_employee_page.add_new_employee(
-            username, password, first_name, last_name)
+        self.add_new_employee(
+            login_data['username'],
+            login_data['password'],
+            employee_data['first_name'],
+            employee_data['last_name'])
 
         assert "Success" in new_employee_page.get_pop_up().text
         wait = WebDriverWait(driver, 10)
