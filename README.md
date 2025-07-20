@@ -40,8 +40,8 @@ npm install
 npx cypress open
 ```
 
-Click on E2E Testing
-Choose a browser
+Click on E2E Testing  
+Choose a browser  
 Click on the Specs to run the tests
 
 ### 3. Run tests in headless mode
